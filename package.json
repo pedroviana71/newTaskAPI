@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "heroku-postbuild": "npm run install"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
