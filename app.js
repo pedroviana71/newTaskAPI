@@ -10,7 +10,7 @@ app.use("/", (req, res) => {
   res.send("Hello World");
 });
 
-port = 3005;
+port = process.env.PORT || 3005;
 
 const start = async () => {
   try {
