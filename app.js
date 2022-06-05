@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use("/api/tasks", tasks);
 app.use("/", (req, res) => {
-  res.send("Hello World");
+  res.send("API is running");
 });
 
 port = process.env.PORT || 3005;
