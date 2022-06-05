@@ -1,4 +1,5 @@
 require("dotenv").config();
+const bodyParser = require("body-parser");
 const connectDB = require("./db/connect");
 const tasks = require("./routes/index");
 const express = require("express");
@@ -6,6 +7,7 @@ const app = express();
 const cors = require("cors");
 
 app.use(cors());
+app.search(bodyParser.json());
 app.use(express.json());
 app.use("/api/tasks", tasks);
 app.use("/", (req, res) => {
