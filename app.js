@@ -6,9 +6,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-app.use(cors());
 app.search(bodyParser.json());
 app.use(express.json());
+app.use(cors());
 app.use("/api/tasks", tasks);
 app.use("/", (req, res) => {
   res.send("Hello World");
