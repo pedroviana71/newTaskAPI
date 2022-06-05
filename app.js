@@ -1,8 +1,11 @@
+require("dotenv").config();
 const connectDB = require("./db/connect");
 const tasks = require("./routes/index");
 const express = require("express");
 const app = express();
-require("dotenv").config();
+var cors = require("cors");
+
+app.use(cors());
 
 app.use(express.json());
 app.use("/api/tasks", tasks);
