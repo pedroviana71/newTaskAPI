@@ -34,16 +34,17 @@ const createTask = async (req, res) => {
 const updateTask = async (req, res) => {
   try {
     const { id: _id } = req.params;
-    const task = await Task.findOneAndUpdate({ _id }, req.body, {
+    const task = await Task.findByIdAndUpdate({ _id }, req.body, {
       new: true,
       runValidators: true,
     });
+
     if (!task) {
       return res.status(404).json({ message: "Task not found" });
     }
     res.status(200).json({ task });
   } catch (error) {
-    res.send(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
