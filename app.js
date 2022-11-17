@@ -12,10 +12,9 @@ app.get("/", (req, res) => {
   res.send("API is running");
 });
 app.use("/api/tasks", tasks);
-app.use((req, res)=>{
+app.use((req, res) => {
   res.status(404).send("404 Page Not Found");
-})
-
+});
 
 port = process.env.PORT || 3005;
 
