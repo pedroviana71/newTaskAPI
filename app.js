@@ -1,6 +1,7 @@
 require("dotenv").config();
 const connectDB = require("./db/connect");
-const tasks = require("./routes/index");
+const tasks = require("./routes/tasks");
+const authRouter = require("./routes/auth");
 const express = require("express");
 const app = express();
 var cors = require("cors");
@@ -11,6 +12,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API is running");
 });
+app.use("/api/v1/auth", authRouter);
 app.use("/api/tasks", tasks);
 app.use((req, res) => {
   res.status(404).send("404 Page Not Found");

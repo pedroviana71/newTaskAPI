@@ -1,6 +1,9 @@
-const register = async (req, res) => {}
+const register = async (req, res) => {
+  res.send("register");
+};
 
+const login = async (req, res) => {
+  res.send("login");
+};
 
-const login = async (req, res) => {}
-
-module.exports = { register, login }
+module.exports = { register, login };
