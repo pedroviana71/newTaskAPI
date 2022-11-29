@@ -1,5 +1,4 @@
 const { StatusCodes } = require("http-status-codes");
-const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 
 const register = async (req, res) => {
@@ -11,13 +10,13 @@ const register = async (req, res) => {
       .json({ message: "Missing information" });
   }
 
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  try {
+    await User.create({ password, email, username });
+  } catch (error) {
+    return res.status(StatusCodes.BAD_REQUEST).json({ message: error });
+  }
 
-  const tempUser = { password: hashedPassword, email, username };
-  const user = await User.create(tempUser);
-
-  res.status(StatusCodes.CREATED).json(user);
+  res.status(StatusCodes.CREATED).json({ email, username });
 };
 
 const login = async (req, res) => {
