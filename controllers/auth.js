@@ -21,14 +21,32 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { password, email, username } = req.body;
+  const { password, email } = req.body;
 
-  if (!email || !password || !username) {
+  if (!email || !password) {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ message: "Missing information" });
   }
-  res.send("ok");
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return res
+      .status(StatusCodes.UNAUTHORIZED)
+      .json({ message: "User not found" });
+  }
+
+  const isMatch = await user.comparePassword(password);
+
+  if (!isMatch) {
+    return res
+      .status(StatusCodes.UNAUTHORIZED)
+      .json({ message: "Invalid credentials" });
+  }
+
+  const token = user.createJWTToken();
+
+  res.status(StatusCodes.OK).json({ email, token, username: user.username });
 };
 
 module.exports = { register, login };
