@@ -13,7 +13,7 @@ app.use(express.json())
 app.get("/", (req, res) => {
   res.send("API is running")
 })
-app.use("/api/v1/auth", authRouter)
+app.use("/api/auth", authRouter)
 app.use("/api/tasks", auth, tasks)
 app.use((req, res) => {
   res.status(404).send("404 Page Not Found")
