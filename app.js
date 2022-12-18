@@ -3,7 +3,6 @@ const tasks = require("./routes/tasks")
 const authRouter = require("./routes/auth")
 const auth = require("./middlewares/auth")
 
-const app = express()
 const connectDB = require("./db/connect")
 
 const cors = require("cors")
@@ -11,6 +10,8 @@ const express = require("express")
 const helmet = require("helmet")
 const xss = require("xss-clean")
 const rateLimiter = require("express-rate-limit")
+
+const app = express()
 
 app.set("trust proxy", 1)
 
