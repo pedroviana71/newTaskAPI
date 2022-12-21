@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema(
   {
@@ -21,13 +21,13 @@ const taskSchema = new mongoose.Schema(
       type: String,
       maxlength: [240, "Comments must be less than 240 characters"],
     },
-    createdBy: {
+    userId: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
       required: true,
     },
   },
   { timestamps: true }
-)
+);
 
-module.exports = mongoose.model("Task", taskSchema)
+module.exports = mongoose.model("Task", taskSchema);
