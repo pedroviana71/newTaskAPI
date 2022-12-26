@@ -2,14 +2,14 @@ const Task = require("../models/task");
 
 const getAllTasks = async (req, res) => {
   const { id } = req.headers;
-
+  console.log(id, "id");
   if (!id) {
     return res.status(400).json({ message: "User Id is required" });
   }
 
   try {
-    const tasks = await Task.find({ id });
-
+    const tasks = await Task.find({ userId: id });
+    console.log(tasks);
     res.status(200).json(tasks);
   } catch (error) {
     res.status(500).json({ message: error.message });
