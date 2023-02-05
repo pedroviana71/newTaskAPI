@@ -26,6 +26,13 @@ const taskSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    deadline: {
+      type: Date,
+    },
+    color: {
+      type: String,
+      default: "none",
+    }
   },
   { timestamps: true }
 );
