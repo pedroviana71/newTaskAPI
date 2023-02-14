@@ -53,7 +53,7 @@ const login = async (req, res) => {
 
 const getUser = async (req, res) => {
   const { id } = req.body;
-  const user = User.findById(id);
+  const user = await User.findById(id);
 
   if (!user) {
     return res

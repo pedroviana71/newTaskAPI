@@ -33,6 +33,8 @@ app.get("/", (req, res) => {
 })
 app.use("/api/auth", authRouter)
 app.use("/api/tasks", auth, tasks)
+app.use("/api/user", auth, authRouter)
+
 app.use((req, res) => {
   res.status(404).send("404 Page Not Found")
 })
