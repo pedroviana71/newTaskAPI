@@ -51,4 +51,17 @@ const login = async (req, res) => {
     .json({ id: user._id, email, token, username: user.username });
 };
 
-module.exports = { register, login };
+const getUser = async (req, res) => {
+  const { id } = req.body;
+  const user = User.findById(id);
+
+  if (!user) {
+    return res
+      .status(StatusCodes.UNAUTHORIZED)
+      .json({ message: "You need to login" });
+  }
+
+  res.status(StatusCodes.OK).json({ id: user._id, email: user.email, username: user.username });
+};
+
+module.exports = { register, login, getUser };
