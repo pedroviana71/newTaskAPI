@@ -1,6 +1,7 @@
 require("dotenv").config()
 const tasks = require("./routes/tasks")
 const authRouter = require("./routes/auth")
+const categoriesRouter = require("./routes/categories")
 const auth = require("./middlewares/auth")
 
 const connectDB = require("./db/connect")
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRouter)
 app.use("/api/tasks", auth, tasks)
 app.use("/api/user", auth, authRouter)
+app.use("/api/category", auth, categoriesRouter)
 
 app.use((req, res) => {
   res.status(404).send("404 Page Not Found")
