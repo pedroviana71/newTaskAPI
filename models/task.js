@@ -13,9 +13,11 @@ const taskSchema = new mongoose.Schema(
       default: false,
     },
     category: {
-      type: String,
-      default: "none",
-      maxlength: 30,
+      type: Object,
+      default: {
+        category: 'none',
+        color: 'none'
+      },
     },
     comments: {
       type: String,
@@ -28,10 +30,6 @@ const taskSchema = new mongoose.Schema(
     },
     deadline: {
       type: Date,
-    },
-    color: {
-      type: String,
-      default: "none",
     }
   },
   { timestamps: true }
