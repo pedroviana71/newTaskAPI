@@ -12,12 +12,10 @@ const taskSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    category: {
-      type: Object,
-      default: {
-        category: 'none',
-        color: 'none'
-      },
+    categoryId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+      ref: "Categories",
     },
     comments: {
       type: String,
