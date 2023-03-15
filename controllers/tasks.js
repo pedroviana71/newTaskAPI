@@ -1,14 +1,34 @@
+const { default: mongoose } = require("mongoose");
 const Task = require("../models/task");
 
 const getAllTasks = async (req, res) => {
   const { id } = req.headers;
-  console.log(id, "id");
+
   if (!id) {
     return res.status(400).json({ message: "User Id is required" });
   }
 
   try {
     const tasks = await Task.find({ userId: id });
+    res.status(200).json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getTaskCategory = async (req, res) => {
+  const { id } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: "Categories Id is required" });
+  }
+
+  try {
+    const tasks = await Task.find({
+      'categoryId': {
+        $in: id
+      }
+    });
     res.status(200).json(tasks);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -67,4 +87,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, getTask, createTask, updateTask, deleteTask };
+module.exports = { getAllTasks, getTask, createTask, updateTask, deleteTask, getTaskCategory };
