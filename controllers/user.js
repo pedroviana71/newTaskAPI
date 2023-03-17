@@ -55,7 +55,6 @@ const getUser = async (req, res) => {
   const { id } = req.headers;
   const user = await User.findById(id);
 
-  console.log(user);
 
   if (!user) {
     return res

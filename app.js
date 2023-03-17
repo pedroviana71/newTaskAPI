@@ -29,7 +29,7 @@ app.use(
   })
 )
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send("API is running")
 })
 app.use("/api/auth", authRouter)
@@ -37,7 +37,7 @@ app.use("/api/tasks", auth, tasks)
 app.use("/api/user", auth, authRouter)
 app.use("/api/category", auth, categoriesRouter)
 
-app.use((req, res) => {
+app.use((_req, res) => {
   res.status(404).send("404 Page Not Found")
 })
 
