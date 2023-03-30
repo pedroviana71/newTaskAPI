@@ -18,7 +18,6 @@ const getAllTasks = async (req, res) => {
 const getTaskCategory = async (req, res) => {
   const { id } = req.body;
 
-  console.log(id)
 
   if (!id) {
     return res.status(400).json({ message: "Categories Id is required" });
