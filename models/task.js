@@ -29,7 +29,7 @@ const taskSchema = new mongoose.Schema(
     deadline: {
       type: Date,
     },
-    favorite: {
+    isFavorite: {
       type: Boolean,
       default: false,
     },
