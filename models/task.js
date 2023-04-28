@@ -6,7 +6,7 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      maxlength: [240, "Task name must be less than 240 characters"],
+      maxlength: [140, "Task name must be less than 240 characters"],
     },
     completed: {
       type: Boolean,
@@ -28,7 +28,11 @@ const taskSchema = new mongoose.Schema(
     },
     deadline: {
       type: Date,
-    }
+    },
+    favorite: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
