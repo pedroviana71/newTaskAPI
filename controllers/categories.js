@@ -23,4 +23,24 @@ const createCategory = async (req, res) => {
     }
 }
 
-module.exports = { getCategories, createCategory };
+const deleteCategory = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const category = await Categories.findByIdAndDelete(id);
+        res.status(StatusCodes.OK).json(category);
+    } catch (error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+    }
+}
+
+const updateCategory = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const category = await Categories.findByIdAndUpdate(id);
+        res.status(StatusCodes.OK).json(category);
+    } catch (error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+    }
+}
+
+module.exports = { getCategories, createCategory, deleteCategory, updateCategory };
