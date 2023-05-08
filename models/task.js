@@ -13,9 +13,7 @@ const taskSchema = new mongoose.Schema(
       default: false,
     },
     categoryId: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-      ref: "Categories",
+      type: String,
     },
     comments: {
       type: String,
