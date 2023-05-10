@@ -8,6 +8,7 @@ const {
 const express = require("express");
 const router = express.Router();
 
-router.route("/").get(getCategories).post(createCategory).delete(deleteCategory).patch(updateCategory)
+router.route("/").get(getCategories).post(createCategory)
+router.route("/:id").delete(deleteCategory).patch(updateCategory)
 
 module.exports = router;

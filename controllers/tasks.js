@@ -15,25 +15,25 @@ const getAllTasks = async (req, res) => {
   }
 };
 
-const getTaskCategory = async (req, res) => {
-  const { id } = req.body;
+// const getTaskCategory = async (req, res) => {
+//   const { id } = req.body;
 
 
-  if (!id) {
-    return res.status(400).json({ message: "Categories Id is required" });
-  }
+//   if (!id) {
+//     return res.status(400).json({ message: "Categories Id is required" });
+//   }
 
-  try {
-    const tasks = await Task.find({
-      'categoryId': {
-        $in: id
-      }
-    });
-    res.status(200).json(tasks);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+//   try {
+//     const tasks = await Task.find({
+//       'categoryId': {
+//         $in: id
+//       }
+//     });
+//     res.status(200).json(tasks);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
 const getTask = async (req, res) => {
   try {
@@ -87,4 +87,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, getTask, createTask, updateTask, deleteTask, getTaskCategory };
+module.exports = { getAllTasks, getTask, createTask, updateTask, deleteTask };
